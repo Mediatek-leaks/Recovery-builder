@@ -52,7 +52,7 @@ jobs:
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -j4
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
-             git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
+             git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH && cd $KERNEL_PATH && git submodule init && git submodule update && git revert 599466588d253fa9a83dd8064be18c536b20241d && cd ../../../
              
        - name: Build
          run: |
